@@ -1,0 +1,37 @@
+.body {
+	width: 100%;
+	height: 52rem;
+}
+
+/* -  nav ------------------------------------------------------- */
+
+/* section ...............................................*/
+
+/* 提示语 */
+.heit {
+	display: none;
+}
+/* 核心技术 */
+.technology-color{
+	position: absolute; 
+	background-color: rgba(0,0,0,0.7); 
+	width: 94%; text-align: center; 
+	color: #fff; 
+	position: absolute; 
+	top: 50%;
+}
+/* 案例 */
+.item img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 加入我们 */
+.join-bottom{
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	bottom: 5px;
+	background-color: #000;
+}
+
