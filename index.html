@@ -9,6 +9,25 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<title>广景视觉</title>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+		<script>
+			(function(){
+				function changeContent() {
+					content = '';
+					var url = "technology.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
+					var request = new XMLHttpRequest();
+					request.open("get", url); /*设置请求方法与路径*/
+					request.send(null); /*不发送数据到服务器*/
+					request.onload = function() { /*XHR对象获取到返回信息后执行*/
+						if (request.status == 200) { /*返回状态为200，即为数据获取成功*/
+							var json = JSON.parse(request.responseText);
+							_content = "";
+							_content = json[0]['first'];
+							showHtmlContent(_content);
+						}
+					}
+				}
+			});
+		</script>
 	</head>
 	<body>
 		<div class="main-header">
@@ -81,8 +100,8 @@
 							</metadata>
 							<image id="图层_0" data-name="图层 0" width="396" height="288" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYwAAAEgCAQAAAAN7oxUAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAHdElNRQfjDA0PBjVgK9LIAAAqk0lEQVR42u2deYAT5fnHn9yTybnJZpPN3oDoouiCKCBKFYsnaqutYlulrfYH1tpWxaNqvREVS6vgXWmtR8GrIFqtqCiK4n0iosgeSXazuTbnZHLN/P5A7l3IMe+8k8n7mT9YdjPv+32z+8077/s+7/MqeCBIB641dFbBWb9Mk4R+3FpqGwUxhnQI/Ua/xKADAOjbpH/A8QwxBz6IMaSDe+vyUcfs/G/vRsv11g3EHHggxpAMzLH02j2/1/up7UrTRmIO8VHiFkDYjjq69/faukyv9DyTmoZbW+1BjCEZcvXDf799KvWW99HYj3Drqy2IMSRD1jnST1SK5vPZf3iXkZ5DPIgxJIM6sq+fOq3NvxpaPnhNoQO3ztqAGKOKaG52Luh/Pfh73DpqAWKMKqOl3bi4fwszGbcOuUOMUXXoVe7R9AbP/9gu3ErkDDFGldJyQv4976PZTtw65AoxRtVi1DafP/SW/8Y8GY4jgBijqnHaXTf414bm5cfiViI3iDGqnua2+vt9T4Yuxq1DXhBjyIK2w21LPe8nZuLWIR+IMWSCElqO0L7keZXMVQkDMYaM0Klajmff8f4L3LiVVD/EGDLDqm8+L7QpcFVmPG4l1Q0xhgypNzfcHnh+6GzSc5QPMYZMaWmvW9H3GjOZmKM8iDFkTOtB9Iaef5KHqnIgxpA57TNzH3r/TcxRKsQYsseobZ6dXO97mDxUlQIxRk1gNzVdOPj54FXEHMVCjFEzOO3O273vRMlcVVEQY9QUzW3WFb2ro2fi1iF9iDFqjraJhmc8q+On4tYhbYgxahCNomUW94zvPvJQNTLEGDWKlWq6aGiz/xZijuEhxqhh6oyu67zvBubj1iFFiDFqnOZW+50D36Unkd3ju0OMIRl4DZ56VYrGUfoP+h8ieQ53hRhDMvBqnLW3H616w7OKIeb4HmIM6aDCWz2lbjk9s6b/bq4V9xshBYgxJIMyiVsBQJ3e/fvAh2SuihwcIyEyR+rew61hO56thptta2r5wBrSY0gGRkKJ01pG2f7Z+1JyRu32HKTHwEBurIplGzOjcq0FZ8HO14MB1ArI2TsOwq1sT3rWui6jPsWtAgfEGCKRnsQewI7Pj1cdSDmUOqset55iYfPBVU2XKftw6xAbYgyksF3JKekZygMd47RYJ2MrI8+FbzS9Tq/HrUNMiDEQkB8LMHQS+xNTl9WEW4tQ+Pp1N9a/WDvDcWIMQcmNTUxN/UR1uLsRtxIUePsMV9e9WRvmIMYQiMz4+A8zZ5u7zBRuJWjpXev4Ey2ZaWV0EGNUDNvFjGcuoTttRtxKxMK7vPEaVTduFWghxqiIyJzUT0wzrDRuHWKT5waXNd0g54cqYowyYbuGZvM/qj9AW7NLpEMpdmnjPXI1BzFGObg99+iOb7DiloEfn1e3oP55OZqDGKNEUtMjNzYdV7PdxDD0bTRfb30OtwqhIcYogfjJsauafkBMsTee18xLLStxqxASYowiiZ8cu6LlONwqpEumEHjRdYXmG9w6hIIYowjSk0I3mH5olfkKReVE0+l7nPfJI66KGGN/uH3XUefbDbhlVAvBaOHu+kfVVb/KQYyxL9yRmZmFjbIM70CJz6f5i3ltdYerE2OMCDM58Nf2qbhVVCs97zZcSnuqdyKXGGMEvMvMPzPrcKuobnpearipWuOqiDH2Ij1JHY+sdbjJtGzlsPnQk467dF/g1lE6xBh74vaf71qIW4ScCES5u80vVVvPQYyxG9nO/sfaD8etQn54Pdp76/5TTascxBi7EP6N6m+1FykrFn1fWq80f1Ytw3FijO/hWvsXOs/VKHDrkDc9r7nmU4FqMAcxBgAAJKeHl7QdiltFbdDzWuOl0h+OE2MAQGJG7LHmmk0tJj5MNr7QsN60BreOfUGM4R68wHI9VcXJbaqTgaDiQftj0h2O17ox3J4/t8zDLaJW8WzVL7b+V5pxVbVtDHfP39tPxi2itun5yHJn3VO4VexNDRsj3+F7uo2sWWCHyYe/sFxrfgm3jt2pWWNwrX0r2yfgVkHYRioX+Z/zSu0m3Dp2UqPGYCaHHm8dg1sFYVciyfQTDYulMhyvSWMkZ4QfaDsAtwrC3gRj3J3Of0phAbAGjRG8OHUBeYiSLt4+/U3UFsM6vCpqzhipaYP3jxqPWwVh33S/Yl5hX4ZTQY0ZI9vp+3fHYbhVEPZPjvevq5+v/xBX/bVlDHfPs+1TcIsgFAuTD7+Ma66qlozh7lndPhG3CEJpRJLpx5puFX84XjPGyI/tv7r1V7hVEMohOKS8Sv+5uHsAa8YY/QvdV+PWQCifnk/rbrK8L17PUSPGCMy33lG7CfvlQu9ap2iHK9eEMSLn5e9vILkEZYHnefttYjxU1YAxmGnBx9vacavYk2Q+meQSqpwqr+SVkI/aJkIB8jwPAKBQKOnwl6DllZwyT6nMWl0dyXC1g1Ccfbb5OtQPVfI3hrvneenk/RjKsCE1o1ZwfoNtyY8OYpqytpy5oC8oQcfs/so0nVYxyrCmm/qa/v0y6sj4lpy6YDXWGcmWKgAYDBWedN+B0hwyN0a2M3hB0+W4VQAwhXhUG1OmtPFXZo9POXLmPLCllZCmPdR687mr0lzGABZrPVXzIyafl7rB/jIqc8jcGNGfWJ/GqyCRT/bThcwnz15xSqSNLdUOe1PQf274wnjSEvUBWaPFpVfhbV00a9XirL9vk+N8fT8Kc8jaGLzb+35LE776/f26RPr9L64+KkZzqrSQJRf0MfU75iPv5sYpWpwYj1HeurVBk6RcDnwKAHrec1wpfMihjI3BtfY9gGvjaiyXHtD2a1cql3JgTCGrhtpoaH+EcecbGtvwtBNg4GaTsXBqitY34JsgKPADz9QtFdYcMjZG6KL6+3DUG2EzPapPNl52XLTyB6diSBoUv9bf1t9vG0NjGHdEWO2pxndW24+8kZuiammwiK9gG0Np9oHGu4R7qJKtMVLTmJcdoj9kxHKZLfxb3uu6ksI+Ou2fNY1d9+cPNrWLP2vV/U7ThdpNef03dNtfUmO4VmMjrpkzf0C5qO55YfYAytUY7u4VHUeLW2WGj2xVvhP/wwFpcXqKvaA2mDvu5qbWt4qdaNR/veuWbV8lDBvM4+9STuRaXJgWVPu+NiwSYieHTI3h/7PrZnFr7PdrPvr2gqNimEzxPXn9q3XjH1J1uUSdcuAgd+jOpJtp2qtrWp4w8O3mRhwPdzk+2G39mYqpLA2oLI2RnjT0stsuXn2BGPeF4XXTQrym2I7XQs2GSzRjLRrx6uz5sP2M3Z/vo8Y3rUf+FQ5TNeAZd/S86L6ikp0csjRGz/L2c8SrbeA7xdOq2xwJ3K3eScSUV/AP8jNcDeLVOXilc9Ge30sYvqbHLYqM0Yx2ucR/F9h86B/uW8s9XFmGxojM0T1iEGnhK8IWPjYsyb5gTeJu9Z7k9ewNiWMtR4j1MNM34D5WPeyw90t7+zx2Zt6tbbGJflJ6OJ55pGFJOUlA5WcMd/eLHV3iVNXvV680X04xlZeEhj6r7u/8DFedSLU92vrLEX9IfWJsugWO5twum9jvgs+r+mfp6aNVN4qtEzH+37b8QqSavtIsdixUizwtWwoWllrNqoeazaL8MfIHc69ofCP8MN/IGF4b+pe5McnFcllazFAWs9k43TMtZzBsKK05srpSk3v7eRFI5PrXMTN5Cnd7i7io5FzPejHeE57f+lp27P71rHMOPhL6qj8ojqadeD6InVz8+yazRynf4qZL0dcSYGBVYV5jHHdriyV9TPQ64wyTCMtu7DTqnSJeRgW09K3pw/KtxmYxVG0nyw2+0vjb4kYcsjIG7x7aakMeseMLqJ+tv1zsle3KCJsKD6tOsyM/eLPnc/fsYidJGcN7poMXKycUXE6reO9ENJ18qvma/YeOyMoYngdb/g91HX4v/N1xZ3XZAgAAKP8ixRynCXU10dnWFaWo8ujqFjMHFlr1TvEC2ONsfp5lnWqfPYeMjJEZz36EelGrf0B7I7e8oWoeonYlTcevh4ucZrS1dH/WcUqpoXxJw2t1U27mJyuaUavbSd+3tguNW0ZWKiNjeO5ruQhtDT6vdpFmmfTWLIolS0ev4S9G/eASO8vyXOl3FfSb6dZ7mNFck9ElVhBi3xbHuSNuc8I+ayLQxbmHMmhnNXwDoblpGnc7K7sK+sGbAgm071P3V7y7XH0x40vu/uX+Tag17qL21dTk4ZTIZh1j4E+OY5GWP6S9tX6ZlFctikGR176XsmQn6BF+JlsdyVe1W8q7V5cdk+BeDj9qPziWSvBGER6srKNSP4s4NX61f/fvy8QY2c70gyaEAQdDGX6x425pBAlWhiqvWM84oUuHMFTEN7ruJSg7dozK2tPap/gntbkEzXAMRSMeN1Ia02Tv+IKK/ni3b+Pu3IW5gnPRdriDD1fFYl6RV9LgWYH4CWWUIEqpTbbB+wNfDvgQq+V5/rvP4jN2rVsmg2+vv9mJrnT/667TQLIRUeXATgwtaT4KXfm9z7WdJVBRlE9nmZc9izVTbWiDEHu/a5u+y0Ac96eXEFd4DsrPkt6PMgfgbqHwF3NMzzfo3rOBZLpLSLV5/YYG/4OhjQMBlL9pz8M7a5TFGGPg7rp2VGV7fJYrDO/ibqHwaPoK6dTxBkSLakZtIGx6XbjylPnmlPHV9D9oS4KLQV6PZvJAc1jmbe33y34yyGfHTLYheyiI5qjFljW4W4gGyxP5v6MrnT0b3EIXaU8Yr7Se+OXU7OPBzf4h4TXrVcG7uNZtX8vAGNEzrcjmLVIr7PfLYS5qONTp+kW9xYT8lcWoA5KHoihXlZ454PxdeorxqaEPBzwsJ2zpHRPCp2/7SgbGYE9DVXLvZ46FyipfudgXGp/jXk8AVelDpyMTzrZGjfOsx3w0NfFiZPOgoAE6zFXberqqN8bQ2S0HoSk5ljPfrv0Kd/vQQj+pebiAaGKSO5PtQqldwc7yOc7mjzC8EP3K50/mhSm1rTk6FUAGxkh3ocqilHimbiXu1qFHc4cP0VHzbc70wcjls/aE8eeGSa9NZZ4e+CooSBRb5CIAGQQR9g+5rSjK9XzrmE19XHk50mfoZ+z9jUiCL7pf6jhFrFZw+q/ojoeYtrzL5tZV9FGZ4zXN0F/lPUb0TJcVRbk5XvtwbdgCgFud/zeaktVTcmPFaoUyfUjYcJb22PenhFcHt4QrGBlqFOGTq/5RKvZTNA3wbUghnMqUFvaEY3mfB0XJLXWJKeK2xZI8w6v9RWiyfv3gu35/uaOn2DlVbwz+GBSlspxlySgE8+RShXpD+xCakhPHid+a+kRnhJ6pPPHNyeFXBr8rp+9QTazyMUZ6kvp9FEPvnrfcJ2llFRu1P7IHDqxtaxS+XE+kRcRUqXuS039mHPdkop5rbCwpki7DKw6u6h4jejIKWzCcdWlt2QJAu1nzOIpyW0RPr7YrmvSkID2zcKzxwfBbA1tiuWLv0ykKjqruMb57b/SRwpfa/UHrD6ow2UGFZLpCi7RNSkqt5Aq8Air8s1AqOU6l5nLplPsw3C0DAABqveWAO5VH5h2uonqw+BnVbAx3/2Y3gqNhIufbHsPdNBx4LJyioDDlOUWu4n5YzWeV+gKnCGjGh3G3aweUX2u8LXt4ppF27y9pRnR2FRuDOZZeK3ypPZ+0Hy2vvReEXeGpNbauhbofsJZ9JYWI/LKKxxjx6ShKNT5AbCFnFOwJ/Q1zC+MNz0U/H+jLjNAvKDKYTksTgtRJwpfpizsQ9EIEicHaWLigoN9Qd/jDmnG5+r3PalTHqtgY+vHCl5lfrf0Wd7sI4qBKn5SGswa1xkcinWlr0y6Hs3GgDVftGCMzXve58KUmTzDKdFsSYWQSBsUf2ZnQpGiy6wEAegKNHVXbYySOFj57c3d3x3rc7SKIjykFC4x/6aPqnw7bso0qmnpMx1StMVJH1QtepvY5MvCuWdhWFmYq6LX2bup3PoCqNUZ+jPBl1q3C3SoCXvTMT77/aKxaY/CCH5Lb62/5DENDOiOnpKepunR1RpNGBZArJBOZIW4D/bp1PVRwHC+hMqrWGI0bw3m1MVsoWBocwizGFD5Qipren5uQNwWvts+07fY70KjqrGCFDjiXyQ2trF+qiSoRTDIQ9kfVzkoBMAYOvLr1ljMeVo3JWipPbh+82HGfeOrTJwUWtE3c/+v6NtjvNPxHPF2EbVSxMXZA9etUlyl/ouzYNtlWHgynmaAR6bM5Oy14het0VZERSdFM6uXG60m/IS5yMAYAsHRUrVjIzWpsLbeEHl/7GHEySDGnhpe0dJR2j+fr+vn6F8VQR9iGLFJ0AqhzxozxdWUmYlY2l7dHY2hN3ZNiKB36Y3JRc3Opd1nq/dMhUSu70KVAFQcR7gVrWMKfEl4dzZZzMy1KftrUGamr3WXlZW9pjt2Q+rEYGgkA8jIGADTGs79KrsiV8XyoL/MMoFJInzR0X/nHFbQ2R/6Wm4ZeJQFANmOMXfFa1E+4Ti3tHoZTH4Q8fLCz94m2Cdv/k+XDgzoWgKWdjmKH4QC9b7fNBh9inQSQXY8BANAcs1/cu7m0e6IM+qja4Lk7bTEwFH5p3ZT4xOjhr00eXBso+liulqNDv0KtkwAA8jg4Zu8rNGcoW8qRId91o1aUmdYf215bKB28NWTe/hOfNbAoniv6cJNB7lDc724tXDLsMQAA7CsSJcU98T2oFQX/b2cazNwT9QvsO1bZ3VHbDZGio3qbG0JnotZKkOWjFAAAsPa/RjLFv1zTjVZOYYJqx4xSjrcth92ykKgYSwlTxZmLoROtWoJ8jQH0x4kSFsS036FVEz/GZdr+9VAG9poaNn1RfFnN9QkESYMIuyNbYwBrv7f4F+t60IqJnb/za6NOudcnfr6kbONhMgBHjnyNAcYN/UXP9uiQJDXeQad5l2O3aMXQGXv8vCl0TinF6Y8gD1OokbExgMkWnfFDVcJ4pHSSXbbdEnzprsztlgU8PbGxpD7ASWebSnk9oXTkbAwwvFrsK9Euc7Kjdv+/WRteHf0tbPvj7gxfm3yi1F8D245UMKF6NyoVg774RTsVSh3sAXt+x1XP3Tt4S+5zhULXVV/GXkSmE8kRSIQdyNoY2oFiX4m2x8i37P09JThtcGy5JWbLDq/fTqEjeVhilvK4+laNKlN0HvByScT0s42vo65FSGRtDE3RhxXySN8Hjha6RL7CEpPTQ7e1T9veVVFalK0HAKAc4Q4E+bcRImtjFN8RoDWGQvBDBRSVpPlxe//W/FOx/0w1IZErrBBZD77Zoudu0BpDLfgfhcZf9q1uz83NP0XZ2uHhNZWXISayNkZ6VOVlCIF6UOgSix897YlvfssFON4DlagZWCpH1sZIFX1maBrpsbsGwbeklltiapr9DyhbOjLkUUpC5I4t9pVoF8wogdfVUxwVKO/OwO0Upt84gsMSkSJnY7jtRafxzLWhFKLq6RP08zLQXV6OwuT0VmxbY5VeXDWXqRe3AHQEz7AUPaQuoDXGFsUbQpanex3KmueKn1j8JlphyfDqMvs4XMjXGO7U/BJeXXJCm9Koe064spIFyyvl3Zk+GW0rRyZeVuYWnMjWGPGJ7SXMSRkdaNUY3uoRbMdHeIP6pfLu1GGbpWOKjnOWCjI1Rn5seGEpr3fqc0jnpRReg0AHzLOc9VFdqrx7dRTKNu6LXARXzeUiU2MMndhxSGl3FIQ/h2Y3rKv6PhKinOAbmn+Xey+HL1dSDFvNZSJLY6QnOe4p9Z7o8Wg1aT6xLh2s+IGif8i+hC46AmxP8E2Zar7BVnWZyNAYzOTYf8u4q+jFwHIxrVA8kq3oMzvFaR+i/4daJwq0IuR5FBYlgGcd8LGEZ3XsR7jFCAEzObTcVcZQWn0EamWKtOm6UAV/1iwXe9F2c3kTtbihqu5sKGV6Ej0ZwGJsmaV52vdZ8Pfgxi2pEvJjY6tb28u5s9nBdqFWp0/VLwi+Ue7d0RfhfGWVHp5Jb8WtoFSUuWb799H4tLrpUMfd4a+9/05Nxy2rHAodkTnKzY1lTrwqIXkUeo3at22/CX8SLXljUJgdXFd/nTuKXiEK4gUN8gSoQqNM75Fvwm5qnm140/dV4Krq6jvSkzyP2P5ZyZApfroYOlVbjMek/+OPlnKPP5RbQc1SV+2ZSpGwsqT2SgFlvm64bzd1Ntwe2ex7AO3svjBkxsd+5Fml/6D9uMrK0U3NjBdDry5FXWh6of/DSFHnNwWTgx+ZnqQvsVTdEtlOClU3wgBQc7qRfmQzwlyY63nX+Le6t6Eft9BhcLMNzPjUSZqZLocQZxs3mZONuhIyApZPXQLO89vUd4Smc40NppFfNxhVDcKLcLOh6lYBdkdXhX2dWrmfWY6WqTA1nMgutayi38MtdleiZxqfppQU2AQsM3KuscwopNIZHYHf91L1D4QP4iwFvcFm2iXgMZFPhtVpVdT4efQPTZnqnIfaFVPR+b2kg7qYeQ67Cf6UvcrznnmB5ROp9B0KpVrwNZjCDFGbkG5LwzlKwybDJvqs5/NNMa9aD5BPW5o1vjdO62Q6GV3KIGiFTBywBIUYSjytRAooghfVl3C69cCAepH9WWUfbtkA7JEUgh4scbwJW5IX1qDmAfIKqsxIqP2z9YVRJZ40JQT9SVeTsso2tgIoS0hKBgCNjY7FiU2e5fGTCyUeyCs0mm8GERw+HJ6Lr0VUSs2oGXS2ALA+haNd6S+rzxYASt3GYIl5Wy10yznm//a/FpiPc0JXFU1+Knyp9KysjNMlWz7wlp9dpGz0VTjCAFCqB+JlLb60dDQsYro9qxIzcNkDRdRQAx39IZ7WiIGqW7NE/FpNRZ8WJSWUAPoyQu62QWtbTje91vtKYD6DYS+x8UMUpaYu5qtqYbMkWNsTvYJnLNk3/Qn9p7ibXQ5KAGtJp9XtTdvBDYsSqz3PpEQ2B/WFH0HkUMeB7Ghx2yEmmt76ez2ixi2lv1ZX5fHLSgD6096NlRbjrGs5y/C277PQPPEerDS9zCcoyvXfKlYLcGBYpr8j8LWI9T2Pu8XloboRIJfVGU4UojCzk54VmRsap+tWK0GEEIZMk7HCMJDh0DazH+iqbv9A8XBfUx/GDklaDchTOQMAKG/R9OBucTkoeADITAy+3CxoOoDetwxP1j+PejGQOYpGMrDrXtNxAlrluGHpwnK2LWvVNNRTAAAMRyPZstbT3zxJXXY6UZwoAQB0H6sfErbYtmPq7x/42Lc0iTSAnf60V/CssAAAbTOjMj9Lm2IMp2umbZxCv8MlATjW/z6aehSvV6ctdmxtta/wCp4prtHZdDH3iud/kfOQrQ0wqpVo3pSh66or6L4czMkfDtDHK02g4MapEC3XmstM9IMf1Y3b/olnGf5EreDdqU5tGa3/sf/HmTyv0/YikJ/Q/hLF21LXGOwxIPoUlR4DV7cIMsbck/6E9VpVFHfryoT//srq+1byCAmn+p4ZOrPQyoOgF93tQaO3py81TWCtEr1Cvw6l0byHW1fjblv5144+QpO23+VDmOTERrecZX3Wt9Z/i6DbgRjVajR621qGfozu3ZAOmfHJmXZEMbfWx3C3rgJ2cQkVPc3bjazL2EEo3rc6drJQzo6dmuXQ6Mxy0VNxf26hvwYvRfV79sUKY3G3ToAeAwBYyxrrYs+HiTxaK9pNLbPM/+3fEpgvRPCF+g0voo32GkXsAbkPwbOdhT+jKju/UgrbE8rl+8H39rZo3+97TtHK2IzIj5E22QwnDM0NTQGWqmgdVpPLWo2INhhZzH1Oy3tiLFViwt33WAuyXf2qy7RVlxtkJ4q9U+MNmM0XMufmOtx2MQQUeP8X6mccj5b/6ZI7NPGhDdnRh7GzLAKm8JcWwd85kEXbdn/TMQGqNAsWAMAIT1hhU+Ca0CZ/HNXz5574g32r4jPKfB6ktr6KTtlgjJmE+3kXzRU+L4xoNorneX5wPu72VXbt/ii1A33W8EFqGWgZJ28RfnVjb4y05UD4hf+nGY3BU/KjS16RpM5Bpcyg83Ua1qvC6N8DkXGHn3FaURXuT9qvUgZxN7Ei9v1Z/G3d4JMD3SyieZ/hCEU9j6a7SvQ33f0dSk09K1KTcX+CCXulu3rWIX3HnuQp3G1E0mN8T97GGl789HHTwXGKMotzfhtNmQ9TzPVNzJlof9F9Ry6rNSAM+7MeHN9AIwlxx4R7YH4rwmgwDjSXa6su8f8eFOOevH5V88ALA4MoP2P2ZjDcv4hzF+fvfKc3jFZNeA7uzzChruzY/lvQvle9b3NV3l/sr8f4HmX+wHjhecowpE6ZjKJlJjLoTUdxl/mO4xlqvxuplMm423wkSjW5U/LrUER7iU/4PNdtaGvgL9dXYe7B3VGUcpJJyMT9kTtH02GnxZSY48N98JhllX6fe7yZo+MvuYwodUTT1FHUp2K2HAWROcZlaKdTej5qOktT9R8hRfUY26Gz2g/8j6utSbOqTiPaWUwqhdFqnJ46L3i42qstjDTu0ASibeaJKHVQGuZXuSrvNULzTA+hnmXkrjauw93Oyimpx9hGwtCtb7i3cERjh/jnlHm26h6y/Uc97MAufWR0TSPiFfuhNDVdjyQ7iRhE5ugf0avQ1tG7qeWo6kv6PwzlDU2Shv+5A/8bCKAdxA1PKO55atjFQMp7H/raY2xyOu6BYXlXcB6qcMvdfjsX4m6nMFcZPcZ28nr2puwJ2VZXXdlFVED/Zs0S++rdA0nYSUOvoe4zAFK59O+NG6prtJGYwUxz3Iy+h+/5svl4dQB3a4WgpDHG7ijz2jXKf6mbQypGL95c1XZM9YZThn4TPkS7Vb0j7aQ6EnebkR8yqVXRs6JfgFbjEbvNZeMOXOK+HP0yFAf8fMO7uBsrEJV3Ol/ZBm8KfBdm0XfTw+P5JPQb/vv1DmaKZ0CcWrtXZqtkt0Hs5O53xHlPet6t9vXunZcwxVCbbP6HfN8xeXF+AXsTinke5d085PQD14lVZ/cHJYeuYLiip/Z5xXk/AqnIubhbK9xVwRhjdwr6ty2dS/NHulvw9X6eteZ79L0D/2w7VJz6IknlHOsGqRylMwzuwQss11PqygsqBu8/LJeYEB5iIC6CGQMAAKjkb7PnZNoanfgaNBjOPtUwTydKXBcAQO/TbX+UpjW41r5722eJVZsvaPuR/h3cbRYOYY0BAEAlr82cnGt3ibLNSQoMhjWXWt+U1jbO5PS8i3vEhjQSYFc4CNzougMQHOWDC+GNAQAsnV/AHl9od5oqL6s66F1pfdSyEreK7bBdA3eIm2S05926EyxJ3O0WEiTGAACImHLXKs9St9TpKi+rGhiI8E9aH5fAybZu7y3mn5tFfdf9Kf0vpPOxIAzIjAGQ039L227nZtjaKfFjR7DQt0W/xPqyBt9OBHfgPMXVDqvY1foebPqjnB6jAJAaAwAgp19vOeA+1QRXO+6GioW3V3t3w18xVOwO/Iy/ylkvfsWejxrO132FocVIQWwMAIBBs+mMxFxubKOgBw1IlyzHJPiLqG/FCzbk3f3XKM9sbMTR2oG4/pfW/+CoGS0iGAMAYMiouY05ih/lxBJXhYNwIv20bRma8zt2wV3Q9f+l4XQd4pjZkRlcZLmRquY0OSMgkjEAAEIm/hL+F9rRVlFO8pECeW5ws+pZ67NoAg4LHcFfF37V1ISzhZ4NLcdXdfaoERHRGABAfau33MUfXX+AOIkVpEGUYQb0f1aHTGuEKjEzPnZido77ENxzGgNB08+NgrVKWohrDAAA6kuD69/cAZY28VanpUCeC/Rwb9JvUl+XP6WbGZ88Ij1Lf0xdPW5LAABEs/nr6pfIbTZqO+IbAwCAet/c+g84zIX1MQAPTD4ZzPi1z6j92h7Ku/+p3Wxn3lwwJGflD6Un2G241e+Eg8CjrnlytQUuYwBAygAXxk9XTMCzzUkaZAoZNj2U8/MRxSBklWkFCzlQ8ipQcfW8RdGgatDZaKNYQYCl4X3DfqpelqOLbWAzBgBAwEzfmZqsHOMQLaaHIAz9Gw1/tshwknYnWI0BAOCxaP/Mn6IfY0GWr5wgNAP9hnn5N2zyPR4BJGAMAJbupuoWw1HW0bUSOlLdBGLKP1H/Mspm58XwSMAYAABZ+jND+8OFiS6M25wIxRDJ5O+ou12Txq0DNRIxBgAAUKk5mV9mR7tqJHSkGknmE8sa/yDfuaidSMkYAMBTqQWJH0BHo4QmJgk76V9uvlDuD1HbkJgxAAB6rPW3x4/QjUN1yC6hXHxrGuZqunGrEAcJGgMA4Ns680LFDLrDKMk5/NrE+5bjct0HuFWIhUSNAQDUJtq+lJtib9fUVOiIVPG+U38t9QZuFeIhXWMAAFBvWg98mJvkduEWUut4X7XfqZdpuODwSNsYAMAYuGsShysmu6y4ldQug+9bLqNQ7yyRGJI3BgBAyEQ9wIzixzmRJ2wm7AnDxd+yzdVuxq1DbKrCGAAAUWP2as05fLONzFWJSCyXfkEzxy7r4I/hqRpjAAA1pM4tUpygbyVzVeIwmICVxosMNbFusSfVZAwAAOorg3Wp6kjnKNxC5I8/rPi788ZaWOUejmozBgDEjeoT2CvSLXh3O8sdX4/2PutS+cdEjUQVGgMAgKdS17LHFQ52WnErkSfBz+kHDctqtbcAqFpjAABk6dx9zATlGHEPV5Y/kSz/pek8rexSqJVGFRsDACBghpsLJ+rayVyVUAyG4GXrXJ2MN60WR5UbAwCoz4yuBbkZ1nYyV1UpHPg/N7+qu652RxY7qX5jAABQr9gO/Ss31dlcS/mqhCaYzK8P//yQMG4d0kAexgAAxrDWevjfYaKrAbeS6qR/q/ppxQJHDS7lDY9sjAEAkDAorsmclB9F5qpKI5ZjNpgfMzxWy7NQeyIrYwAAZOjoFbrzuBZbzWTIrZSeTU4mPsMZx61DWsjOGACMoQDqNyNaemytnOZUPv6Y6lP6BcNduHVIDxkaYxuf1jtv42Y2tJFtTiMxlMl+o3jechuZmh0O2RoDgDGss0x8KNdFQkf2huGi3eq17BWtLBlXDI+MjQEAkNNnLovPVBzciOEILqmSLkT9yg1f/e64KDHFyMjcGAAAPotlQeoofoyrZg5XHhkOBvv5d967dFaYLOLtmxowBgBAwAzXq05VdtT2cHzAo9705oUzh+R1IjcaasQYAECFNYXFcBzdVouhIwwX82q69f/RPaQmPUVR1I4xAACoLwzOJfmjHc21NFcVSnFe2PzJRSdGyJiieGrLGAAA1PP1Ux8sHFELGXI5CARUAe6VyIID00rSU5RE7RkDAIBKLogfqjxczqc5hZmcT9n937mzwvU50lOUTm0aA7ad5pScpD6o3oBbidCE2MKAOkwFN/5yfFLOh4GhpWaNAQDgsWivh1naNrnMVQWTENIV2DXdN0xIaoklKqKmjQEA1EaDbSEc5xxTzYc5RbNsQJlWhGnvlos6GS1HHp0qp9aNAQCM4RPj2MczY5tbcSsplTCTG1KlCl6Lfu1P29k2tjYzQKGBGAMAADg980dmBjfBZcetZH8k80yKS2sYyPABffLVeQcxjpy8j4nEAzHGDlIG/g5mEnQ2SChDbo5nC5lMIceziqwqq+K4uIFacmZb5rCkPUdmm1BCjLEbQZP+gdgh6g4nlriqhJcv8BzPAQDHZWzjCqlCbN6sxqwt38o25FpZR07HkRgncSDG2ItP6l1/Up2uaxP75PEUp2tOxzkFgJLX8AAUmVfCCDHGMIRNPp3rHm6qo03MrCOJgqkGo7ikCjHGSFBvWcb+g5/gEu00pxRnUOFuNGE7xBj7IGXgL00dy3eJM1dFegwpQYyxHxIGxR3xibouux55TcQYEoIYowg8FvtTEYdhHNrQEfIoJSWIMYrkY0fTgsJ002h0n+qkx5ASxBhFU9B/aGpbzB9ja9EhmasiPYaUIMYoiTT9tmXcw6rxLgRxVcQYUoIYo2Q8FtvZ7CW5FqFPHifGkBLEGGXBGJJX6s5nbUKePE6MISWIMcqFSqqYP6lmK5uFmqsixpASxBiVQPVQ9KLCD21tQgzHiTGkBDFGpVBvWA+8XzHB0VppXBUxhpQgxhCAhOEj04GPKCZVdpoTMYaUIMYQiLBJd21qumJcg6XcEogxpAQxhoAETfx81dlcs8NYzt3EGFKCGENYqKAmfxOcZumgS/4jJ8aQEsQYghM1fk133FM4wtlR2nCcGENKEGMgIUOvsxy2rDC+sYTTnIgxpAQxBjIydG4eOzs/2mUr7vXEGFKCGAMpKQN/R3yy5qBihuPEGFKCGAM5W+uMV3GnaUfb9hM6QowhJYgxxID6hrbcqZhuGLWvP32GK30mi4AKYgyxoDYaGh7MH9E44k4OsoNPShBjiAmV+jX7i+yoRudwP8zwumpOuS4ziDHEhkpey57Cjd47dCSYcVC4xRG2Q4yBAcaQulpzTrZhd3Ns/XpUJ25lhO2QzhsDdMqxQDMB7g5/HdzlxG1qFW5dhJ2QHgMfVFBDL4sfqHAqtHwhu7XhEuo93JII26mh866lybd175oDWkNhQnJKALcWwk7+H3a6kODdMb/NAAAAAElFTkSuQmCC" />
 						</svg>
-						<svg class="move-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="80"
-						 viewBox="0 0 396 288">
+						<svg class="move-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150"
+						 height="120" viewBox="0 0 396 288">
 							<metadata>
 								<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
 								<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c142 79.160924, 2017/07/13-01:06:39        ">
@@ -96,12 +115,12 @@
 						</svg>
 					</div>
 					<div class="index-text">
-					<div class="index-text1">
-						<p >广&nbsp; | &nbsp;景&nbsp; | &nbsp;视&nbsp; | &nbsp;觉</p>
-					</div>	
-					<div class="index-text2">
-						<p >用AI守护每一份安全</p>
-					</div>
+						<div class="index-text1">
+							<p>广&nbsp; | &nbsp;景&nbsp; | &nbsp;视&nbsp; | &nbsp;觉</p>
+						</div>
+						<div class="index-text2">
+							<p>用AI守护每一份安全</p>
+						</div>
 					</div>
 					<div class="heit">
 						<a class="intro-animated animated flash bounceInUp" data-animation="bounceInUp" href="#technology">上滑</a>
@@ -112,194 +131,47 @@
 			<!-- 核心技术 -->
 			<div class="section  technology">
 				<div class="row">
-					<div class="col-xs-6 col-md-1">
+					<div class="col-xs-1 col-md-1">
 						<table class="table table-bordered">
 							<tr>
 								<td class="active">
-									<button type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="first" onclick="changeContent(1)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span>
+										<a href="javaScript:;" class="category">人员检测类</a>
 									</button>
-									<a href="javaScript:;" class="category">人员检测类</a>
 								</td>
 							</tr>
 							<tr>
 								<td class="active">
-									<button type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="second" onclick="changeContent(2)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-film" aria-hidden="true"></span>
+										<a href="javaScript:;" class="category">视频检测类</a>
 									</button>
-									<a href="javaScript:;" class="category">视频检测类</a>
 								</td>
 							</tr>
 							<tr>
 								<td class="active">
-									<button type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="thrid" onclick="changeContent(3)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+										<a href="javaScript:;" class="category">人脸识别类</a>
 									</button>
-									<a href="javaScript:;" class="category">人脸识别类</a>
 								</td>
 							</tr>
 							<tr>
 								<td class="active">
-									<button type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="fourth" onclick="changeContent(4)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-text-background" aria-hidden="true"></span>
+										<a href="javaScript:;" class="category">文字识别类</a>
 									</button>
-									<a href="javaScript:;" class="category">文字识别类</a>
 								</td>
 							</tr>
 						</table>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-11">
-						<div class="row category-pic">
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="bottom"
-								 data-content="算法简介：自动识别监控室、保安室等需要全天值守工作的脱岗行为，预防突发情况。 适用场景：危险区域监控室 防止在发生无关人员误入危险区域的情况下没有及时处理。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/TakeOffHillockDetection.jpg" alt="脱岗检测">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="bottom"
-								 data-content="算法简介：基于动态视频实时区域内的人流密度、变化趋势等，进行数据采集，防止突发事件。 适用场景：定员作业车间 在有定员规定的作业车间进行实时监测，防止人数过多或聚众情况，提高作业效率。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/SafetyHelmet.jpg" alt="安全帽识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-2">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left"
-								 data-content="算法简介：基于大规模服装数据识别训练，识别监控区域内人员的穿着情况，有效预防安全隐患，加强厂区文明建设。适用场景：厂区、建设工地等自动识别未穿工服及工服穿着不整齐的人员，建设安全文明厂区火工、化工等特殊作业区识别未穿着防护服、防静电服的作业人员，及时告警提醒，预防安全隐患">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/MigrantWorkersToTdentify.jpg" alt="服装识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-2">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left"
-								 data-content="算法简介：通过机器视觉图像感知技术，嵌入人体图像识别算法。在机器视觉图像中，通过人体识别算法建立人体图像模型，完成自动识别人体。可以对人体精确监测、跟踪，实现对人体的监测分析识别，实时预警重点区域内的人员闯入事件。适用场景：厂区周界全方位无死角视频监控，可对目标进行提醒、警告，识别人型报警率高达100%。火工区等危险作业区域当有人员闯入监测范围内可以对其跟踪自动识别，同时输出报警信号。防止人员误入危险区域而产生安全事故。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/PeopleBrok.jpg" alt="闯入检测">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-2">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left"
-								 data-content="算法简介：基于大规模安全帽数据识别训练，配合现场监控，自动识别区域内工作人员安全帽的佩戴情况。若检测到未佩戴安全帽的情况，可以同步示警监管人员，识别准确率高达90%。适用场景：建设工地等自动识别佩戴安全帽的情况，并实时提醒监管人员，减少人力监管成本。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/TrafficDensity.jpg" alt="人流密度检测" >
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-2">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left"
-								 data-content="算法简介：基于大规模吸烟场景数据识别训练，通过人体姿态识别，分析动态视频中人的动势，识别吸烟行为。适用场景：加油站针对加油站、火工区等极易发生火灾爆炸事故的特殊场所，自动识别并实时报警提醒，提高厂区安全性。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/SmokingIdentification.jpg" alt="吸烟识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-2">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left"
-								 data-content="算法简介：基于大量人体动作数据训练，配合摄像头及视觉分析技术，依据身体的关键点实时检测并捕捉人体姿态结果，识别打手机行为。适用场景：火工区等作业车间准确识别车间打手机的不安全行为，避免因打手机产生静电而引起爆炸事故。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/MobilePhoneRecognition.jpg" alt="打手机识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-2">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="left"
-								 data-content="算法简介：利用视频数据集，基于大量人体姿态动作的数据训练，提取人体行为特征自动识别人员姿态和动作。适用场景：火工区等特殊生产车间能精准判断工作人员跑、跳等剧烈动作，实时预警提醒做到安全管控。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/BehaviorRecognition.jpg" alt="行为识别">
-									</a>
-								</button>
+					<div class="col-xs-8  col-md-8 col-md-offset-1">
+						<div id="viewShow" class="row" style="color: #fff;">
 
-							</div>
-						</div><!-- 人员检测类 结束-->
-
-						<div class="row category-pic display">
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="top"
-								 data-content="算法简介：明火识别算法基于大规模火焰数据识别训练，配合摄像头，通过对明火焰苗高度和焰流的检测，判断区域内火势大小情况。如有火情，立刻发出警报。适用场景：动火作业区实时监测火势的异常情况，不仅可以保障人员安全，还能提前预防火灾隐患，将财产损失最小化。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/FlameRecognition.jpg" alt="明火识别" >
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="top"
-								 data-content="算法简介：基于大规模烟雾场景数据识别训练，实时监测区域内烟雾动态情况，提前预防火灾隐患。适用场景：无法安装烟感的开放区域在室外开放区域也能精准识别，受环境因素影响较小，适用范围广。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/SmokeRecognition.jpg" alt="烟雾识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="top"
-								 data-content="算法简介：基于视觉识别技术，实时监测安全通道有障碍物等异常情况，及时告警提醒，保证安全通道通畅。适用场景：厂区安全出口识别快速精准，保证安全通道不被堵塞，提高厂区安全性。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/SafetyChannelException.jpg" alt="安全通道异常识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="top"
-								 data-content="算法简介：船舶闯入识别算法可自动识别江面航道上移动的船舶等大体积移动物体（检测目标），在发生异常位移，其他船舶靠近码头等情况时，系统可以实时告警。适用场景：港口管理能很好的帮助港口管理人员监控船舶的安全情况，在紧急情况发生时快速示警提醒。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/ShipBrokeInto.jpg" alt="船舶闯入监测" >
-									</a>
-								</button>
-							</div>
-						</div><!-- 视频分析类 结束-->
-
-						<div class="row category-pic display">
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="right"
-								 data-content="算法简介：对检测到的人脸进行定位并标记边框，识别个人五官动作及形态，输出表情结果。适用场景：加油站、便利店等辨认客户及工作人员面部表情，监督工作人员服务质量。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/EmotionRecognition.jpg" alt="情绪识别">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="right"
-								 data-content="算法简介：对图片中的人脸进行监测，提取面部特征，比对两张人脸的相似度，计算相似度百分比。适用场景：门禁、考勤通过摄像头确认进入厂区人员的身份信息，防止外来人员闯入，提高厂区安全性。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/ThefaceContrast.jpg" alt="人脸比对" >
-									</a>
-								</button>
-							</div>
-						</div><!-- 人脸识别类 结束-->
-
-						<div class="row category-pic display">
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="right"
-								 data-content="算法简介：能有效识别中国大陆机动车车牌，包括地域编号和车牌号。适用场景：厂区入口通过摄像头数据统计进出厂区的车辆信息，进行有效安全管控。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/licensePlate.jpg" alt="车牌OCR">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="right"
-								 data-content="算法简介：自动识别二代居民身份证关键字段，包括姓名、性别、民族、出生日期、住址、身份证号等，识别准确率高。适用场景：特殊区域门禁自动识别身份信息，防止外来人员进入。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/IdentityCardIdentification.png" alt="身份证OCR">
-									</a>
-								</button>
-							</div>
-							<div class="col-xs-6 col-sm-3">
-								<button type="button" class="btn btn-link" data-container="body" data-toggle="popover" data-placement="right"
-								 data-content="算法简介：自动识别主流银行卡关键字段，包括卡号、发卡行、卡片类型等，识别准确率高。适用场景：金融机构适用于银行等金融机构对用户信息的快速认证和录入，提高业务效率。">
-									<a href="#" class="thumbnail">
-										<img src="http://img.guangjingshijue.com/BankCardIdentification.jpg" alt="银行卡OCR" >
-									</a>
-								</button>
-
-							</div>
-						</div><!-- 文字识别类 结束-->
-
-					</div><!-- 左侧栅格 结束 -->
+						</div>
+					</div>
 				</div><!-- 全局栅格 结束 -->
 				<!-- 移动端 -->
 				<div class="move-technology">
@@ -567,7 +439,7 @@
 			</div><!-- 应用案例 结束-->
 			<!-- 关于广景 -->
 			<div class="section  about">
-				<div class="row">
+				<div class="row about-front">
 					<div class="col-xs-3 col-sm-4 col-md-4">
 						<a class=" btn-primary " href="#myModal" data-toggle="modal">
 							<h2 style="position: absolute;top: 15rem; left: 15rem;">公司简介</h2>
@@ -576,7 +448,7 @@
 						<!-- 模态弹出窗内容 -->
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" role="dialog"
 						 style="position: absolute;">
-							<div class="modal-dialog" role="document" aria-hidden="true">
+							<div class="modal-dialog modal-sm" role="document" aria-hidden="true">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
@@ -658,7 +530,7 @@
 			<div class="section  join">
 				<div class="container-fluid ">
 					<div class="row join-pc">
-						<div class="col-md-2 col-xs-2 col-md-offset-1" style="padding: 10px; color: #fff; ">
+						<div class="col-md-2 col-xs-5 col-md-offset-1" style="padding: 10px; color: #fff; ">
 							<img src="http://img.guangjingshijue.com/code.jpg" style="width: 100%;height=100% ">
 							<h3>联系地址：</h3>
 							<p>北京市海淀区中关村东路18号财智国际大厦B座305</p>
@@ -667,28 +539,28 @@
 							<h3>邮箱：</h3>
 							<p>myf@guangjingshijue.com</p>
 						</div>
-						<div class="col-md-4 col-xs-4 col-md-offset-2">
+						<div class="col-md-4 col-xs-3 col-md-offset-2">
 							<!--百度地图容器-->
-							<div style="width:750px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+							<div class="map-join" id="dituContent"></div>
 						</div>
 					</div>
 					<!-- 移动端 -->
 					<div class="row join-move">
 						<div class="col-xs-3 col-md-4 "> </div>
-					  <div class="col-xs-6 col-md-4 ">
-						  <img src="http://img.guangjingshijue.com/code.jpg" style="width: 100%;height=100% ">
-					  </div>
-					  </div>
-					  <div class="row join-move">
-						<div class="col-xs-2 col-md-3 "> </div>
-					  <div class="col-xs-10 col-md-4">
-						  <h4>联系地址：</h4>
-						  <p>北京市海淀区中关村东路18号财智国际大厦B座305</p>
-						  <h4>联系电话：</h4>
-						  <p>010-62625629</p>
-						  <h4>邮箱：</h4>
-						  <p>myf@guangjingshijue.com</p>
-					  </div>
+						<div class="col-xs-6 col-md-4 ">
+							<img src="http://img.guangjingshijue.com/code.jpg" style="width: 100%;height=100%">
+						</div>
+					</div>
+					<div class="row join-move">
+						<div class="col-xs-3 col-md-3 "> </div>
+						<div class="col-xs-5 col-md-4 ">
+							<h4>联系地址：</h4>
+							<p>北京市海淀区中关村东路18号财智国际大厦B座305</p>
+							<h4>联系电话：</h4>
+							<p>010-62625629</p>
+							<h4>邮箱：</h4>
+							<p>myf@guangjingshijue.com</p>
+						</div>
 					</div>
 				</div><!-- 移动端 结束 -->
 				<div class="join-bottom">
@@ -698,7 +570,7 @@
 							<p style="float:left;height:20px;margin: 0px 0px 0px 0px; color:#939393;">京公网安备
 								11010802030364号 </p>
 						</a>
-						<p style="float:right;height:20px; color:#939393;"> || 京ICP备19054544号-1  &nbsp; &#xa9; 2019 visuaWide</p>
+						<p style="float:right;height:20px; color:#939393;"> || 京ICP备19054544号-1 &nbsp; &#xa9; 2019 visuaWide</p>
 					</div>
 				</div>
 				<!-- 备案移动端 -->
@@ -709,9 +581,10 @@
 							<p style="float:left;height:20px;margin: 0px 0px 0px 0px; color:#939393; font-size: 3px;">京公网安备
 								11010802030364号 </p>
 						</a>
-						<p style="color:#939393; font-size: 3px;"> || 京ICP备19054544号-1  &nbsp; &#xa9; 2019 visuaWide</p>
+						<p style="color:#939393; font-size: 3px;"> || 京ICP备19054544号-1 &nbsp; &#xa9; 2019 visuaWide</p>
 					</div>
-				</div><!-- 备案移动端 结束
+				</div>
+				<!-- 备案移动端 结束
 				-->
 			</div><!-- 加入我们 结束-->
 
@@ -724,6 +597,7 @@
 
 	<script>
 		$(function() {
+			changeContent(1)//调用changeContent函数
 			$('#fullPage').fullpage({
 				anchors: ['intro', 'technology', 'case', 'about', 'join'], //定义锚链接
 				sectionsColor: ['#3B3B3B', '#3B3B3B', '#3B3B3B', '#3B3B3B', '#3B3B3B'],
@@ -742,7 +616,7 @@
 			$(".nav-trigger").click(function() {
 				$("#index-nav,.nav-trigger").toggleClass("nav-is-visible");
 			});
-			
+
 			//进入后显示一张图片
 			$('.image').eq(0).siblings().css({
 				display: 'none'
@@ -760,7 +634,7 @@
 					display: 'none'
 				});
 			});
-			
+
 			var _hmt = _hmt || [];
 			(function() {
 				var hm = document.createElement("script");
@@ -769,34 +643,6 @@
 			})();
 		});
 
-		$('.category').click(function() {
-
-			switch ($(this)[0].innerText) {
-				case '人员检测类':
-					$('.category-pic').eq(0).removeClass("display")
-					$('.category-pic').eq(0).siblings().addClass("display")
-					break;
-
-				case '视频检测类':
-					$('.category-pic').eq(1).removeClass("display")
-					$('.category-pic').eq(1).siblings().addClass("display")
-					break;
-				case '人脸识别类':
-					$('.category-pic').eq(2).removeClass("display")
-					$('.category-pic').eq(2).siblings().addClass("display")
-					break;
-				case '文字识别类':
-					$('.category-pic').eq(3).removeClass("display")
-					$('.category-pic').eq(3).siblings().addClass("display")
-					break;
-			}
-		});
-
-		$(function() {
-			$('[data-toggle="popover"]').popover()
-		});
-
-
 		$('#myModal').on('shown.bs.modal', function() {
 			$('#myInput').focus()
 		});
@@ -804,6 +650,72 @@
 		$('#myModal').on('shown.bs.modal', function() {
 			$('#myInput').focus()
 		})
+	</script>
+
+	<script>
+		/*  
+		 *	用于点击事件时，点击不同得按钮更换内容
+		 *  @method changeContent 更改内容的函数
+		 *	@param number _num 按钮定义得编号
+		 */
+		function changeContent(_num) {
+			//console.log(typeof(_num));
+			content = '';
+			var url = "technology.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
+			var request = new XMLHttpRequest();
+			request.open("get", url); /*设置请求方法与路径*/
+			request.send(null); /*不发送数据到服务器*/
+			request.onload = function() { /*XHR对象获取到返回信息后执行*/
+				if (request.status == 200) { /*返回状态为200，即为数据获取成功*/
+					var json = JSON.parse(request.responseText);
+					// console.log(json);
+					_content = "";
+					switch (_num) {
+						case 1:
+							//console.log(json[0]['first']);
+							_content = json[0]['first'];
+							break;
+						case 2:
+							// console.log(json[1]);
+							_content = json[1]['second'];
+							break;
+						case 3:
+							// console.log(json[2]);
+							_content = json[2]['thrid'];
+							break;
+						case 4:
+							//console.log(json[3]);
+							_content = json[3]['fourth'];
+							break;
+						default:
+							console.error('error');
+					}
+					showHtmlContent(_content);
+				}
+			}
+		}
+		/*  
+		 *	将得到的json数据，渲染到页面中
+		 *  @method showHtmlContent 渲染页面的函数
+		 *	@param object _content 按钮定义得编号
+		 */
+		function showHtmlContent(_content) {
+			//console.log(typeof(_content));
+
+			document.getElementById('viewShow').innerHTML = '';
+
+			for (var i = 0; i < _content.length; i++) {
+				var _html = '<div class=" col-xs-6 col-md-3"> ';
+				_html += '<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="' + _content[i]['content'] + '">';
+				// _html +='图片地址：'+_content[i]['imgSrc']+'<br />';
+				_html += '<img width="200px" height="200px" src="' + _content[i]['imgSrc'] + '" />';
+				_html += ' </button>'
+				_html += ' </div>'
+				//console.log(_content[i]);
+				document.getElementById('viewShow').innerHTML += _html;
+			}
+			$('[data-toggle="popover"]').popover()
+		}
 	</script>
 
 	<script type="text/javascript">
