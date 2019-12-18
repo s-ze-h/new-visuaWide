@@ -1,0 +1,172 @@
+[
+    {
+        "one":[
+            {
+                "title":"安全帽识别",
+                "imgSrc":"http://img.guangjingshijue.com/SafetyHelmet.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "two":[
+            {
+                "title":"服装识别",
+                "imgSrc":"http://img.guangjingshijue.com/MigrantWorkersToTdentify.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "three":[
+            {
+                "title":"人流密度检测",
+                "imgSrc":"http://img.guangjingshijue.com/TrafficDensity.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "four":[
+            {
+                "title":"脱岗检测",
+                "imgSrc":"http://img.guangjingshijue.com/TakeOffHillockDetection.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "five":[
+            {
+                "title":"闯入检测",
+                "imgSrc":"http://img.guangjingshijue.com/PeopleBrok.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "six":[
+            {
+                "title":"吸烟识别",
+                "imgSrc":"http://img.guangjingshijue.com/SmokingIdentification.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "seven":[
+            {
+                "title":"打手机识别",
+                "imgSrc":"http://img.guangjingshijue.com/MobilePhoneRecognition.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "eight":[
+            {
+                "title":"行为识别",
+                "imgSrc":"http://img.guangjingshijue.com/BehaviorRecognition.jpg",
+                "sort":"人员检测类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "nine":[
+            {
+                "title":"明火识别",
+                "imgSrc":"http://img.guangjingshijue.com/FlameRecognition.jpg",
+                "sort":"视频分析类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "ten":[
+            {
+                "title":"烟雾识别",
+                "imgSrc":"http://img.guangjingshijue.com/SmokeRecognition.jpg",
+                "sort":"视频分析类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "eleven":[
+            {
+                "title":"安全通道异常识别",
+                "imgSrc":"http://img.guangjingshijue.com/SafetyChannelException.jpg",
+                "sort":"视频分析类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "twelve":[
+            {
+                "title":"船舶闯入监测",
+                "imgSrc":"http://img.guangjingshijue.com/ShipBrokeInto.jpg",
+                "sort":"视频分析类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "thirteen":[
+            {
+                "title":"情绪识别",
+                "imgSrc":"http://img.guangjingshijue.com/EmotionRecognition.jpg",
+                "sort":"人脸识别类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "fourteen":[
+            {
+                "title":"人脸比对",
+                "imgSrc":"http://img.guangjingshijue.com/ThefaceContrast.jpg",
+                "sort":"人脸识别类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "fifteen":[
+            {
+                "title":"车牌OCR",
+                "imgSrc":"http://img.guangjingshijue.com/licensePlate.jpg",
+                "sort":"文字识别类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "sixteen":[
+            {
+                "title":"身份证OCR",
+                "imgSrc":"http://img.guangjingshijue.com/IdentityCardIdentification.png",
+                "sort":"文字识别类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    },
+    {
+        "seventeen":[
+            {
+                "title":"银行卡OCR",
+                "imgSrc":"http://img.guangjingshijue.com/BankCardIdentification.jpg",
+                "sort":"文字识别类",
+                "other":"other content,just like link , button color etc.."
+            }
+        ]
+    }
+]

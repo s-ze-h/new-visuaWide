@@ -116,7 +116,7 @@
 						<table class="table table-bordered">
 							<tr>
 								<td class="active">
-									<button id="first" onclick="changeContent(1)" type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="first" onclick="changeCon(1)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-user" aria-hidden="true"></span>
 										<a href="javaScript:;" class="category">人员检测类</a>
 									</button>
@@ -124,7 +124,7 @@
 							</tr>
 							<tr>
 								<td class="active">
-									<button id="second" onclick="changeContent(2)" type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="second" onclick="changeCon(2)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-film" aria-hidden="true"></span>
 										<a href="javaScript:;" class="category">视频检测类</a>
 									</button>
@@ -132,7 +132,7 @@
 							</tr>
 							<tr>
 								<td class="active">
-									<button id="thrid" onclick="changeContent(3)" type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="thrid" onclick="changeCon(3)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-eye-open" aria-hidden="true"></span>
 										<a href="javaScript:;" class="category">人脸识别类</a>
 									</button>
@@ -140,7 +140,7 @@
 							</tr>
 							<tr>
 								<td class="active">
-									<button id="fourth" onclick="changeContent(4)" type="button" class="btn btn-default" aria-label="Left Align">
+									<button id="fourth" onclick="changeCon(4)" type="button" class="btn btn-default" aria-label="Left Align">
 										<span class="glyphicon glyphicon glyphicon-text-background" aria-hidden="true"></span>
 										<a href="javaScript:;" class="category">文字识别类</a>
 									</button>
@@ -162,212 +162,61 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							<li role="presentation">
+							<li role="presentation" button id="one" onclick="changeContent(1)"> 
 								<a role="menuitem" tabindex="-1" class="pull">安全帽识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="two" onclick="changeContent(2)">
 								<a role="menuitem" tabindex="-1" class="pull">服装识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="three" onclick="changeContent(3)">
 								<a role="menuitem" tabindex="-1" class="pull">人流密度检测</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="four" onclick="changeContent(4)">
 								<a role="menuitem" tabindex="-1" class="pull">脱岗检测</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="five" onclick="changeContent(5)">
 								<a role="menuitem" tabindex="-1" class="pull">闯入检测</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="six" onclick="changeContent(6)">
 								<a role="menuitem" tabindex="-1" class="pull">吸烟识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="seven" onclick="changeContent(7)">
 								<a role="menuitem" tabindex="-1" class="pull">打手机识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="eight" onclick="changeContent(8)">
 								<a role="menuitem" tabindex="-1" class="pull">行为识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="nine" onclick="changeContent(9)">
 								<a role="menuitem" tabindex="-1" class="pull">明火识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="ten" onclick="changeContent(10)">
 								<a role="menuitem" tabindex="-1" class="pull">烟雾识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="eleven" onclick="changeContent(11)">
 								<a role="menuitem" tabindex="-1" class="pull">安全通道异常识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="twelve" onclick="changeContent(12)">
 								<a role="menuitem" tabindex="-1" class="pull">船舶闯入监测</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="thirteen" onclick="changeContent(13)">
 								<a role="menuitem" tabindex="-1" class="pull">情绪识别</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="fourteen" onclick="changeContent(14)">
 								<a role="menuitem" tabindex="-1" class="pull">人脸比对</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="fifteen" onclick="changeContent(15)">
 								<a role="menuitem" tabindex="-1" class="pull">车牌OCR</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="sixteen" onclick="changeContent(16)">
 								<a role="menuitem" tabindex="-1" class="pull">身份证OCR</a>
 							</li>
-							<li role="presentation">
+							<li role="presentation" button id="seventeen" onclick="changeContent(17)">
 								<a role="menuitem" tabindex="-1" class="pull">银行卡OCR</a>
 							</li>
 						</ul>
 					</div>
 					<div class="pull-menu">
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">安全帽识别</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/SafetyHelmet.jpg" alt="安全帽识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">服装识别</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/MigrantWorkersToTdentify.jpg" alt="服装识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">人流密度检测</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/TrafficDensity.jpg" alt="人流密度检测">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">脱岗检测</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/TakeOffHillockDetection.jpg" alt="脱岗检测">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">闯入检测</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/PeopleBrok.Into.jpg" alt="闯入检测">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">吸烟识别</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/SmokingIdentification.jpg" alt="吸烟识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">打手机识别</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/MobilePhoneRecognition.jpg" alt="打手机识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">行为识别</p>
-									<p class="technology-text-two">人员检测类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/BehaviorRecognition.jpg" alt="行为识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">明火识别</p>
-									<p class="technology-text-two">视频分析类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/FlameRecognition.jpg" alt="明火识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">烟雾识别</p>
-									<p class="technology-text-two">视频分析类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/SmokeRecognition.jpg" alt="烟雾识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">安全通道异常识别</p>
-									<p class="technology-text-two">视频分析类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/SafetyChannelException.jpg" alt="安全通道异常识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">船舶闯入监测</p>
-									<p class="technology-text-two">视频分析类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/ShipBrokeInto.jpg" alt="船舶闯入监测">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">情绪识别</p>
-									<p class="technology-text-two">人脸识别类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/EmotionRecognition.jpg" alt="情绪识别">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">人脸比对</p>
-									<p class="technology-text-two">人脸识别类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/ThefaceContrast.jpg" alt="人脸比对">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">车牌OCR</p>
-									<p class="technology-text-two">文字识别类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/licensePlate.jpg" alt="车牌OCR">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">身份证OCR</p>
-									<p class="technology-text-two">文字识别类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/IdentityCardIdentification.jpg" alt="身份证OCR">
-						</div>
-						<div class="image">
-							<div class="technology-color">
-								<div class="technology-strip">
-									<p class="technology-text-one">银行卡OCR</p>
-									<p class="technology-text-two">文字识别类</p>
-								</div>
-							</div>
-							<img class="technology-pic" src="http://img.guangjingshijue.com/BankCardIdentification.jpg" alt="银行卡OCR">
+						<div class="image" id="imgShow">
 						</div>
 					</div>
 				</div>
@@ -558,15 +407,14 @@
 				<div class="move-bottom">
 					<div style="width:500px;margin:0 auto; padding:20px 0">
 						<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802030364  " style="display:inline-block;text-decoration:none;height:20px;">
-							<img src="http://img.guangjingshijue.com/beian.png" style="float:left;">
+							<img class="move-img" src="http://img.guangjingshijue.com/beian.png" style="float:left;">
 							<p style="float:left;height:20px;margin: 0px 0px 0px 0px; color:#939393; font-size: 3px;">京公网安备
 								11010802030364号 </p>
 						</a>
 						<p style="color:#939393; font-size: 3px;"> || 京ICP备19054544号-1 &nbsp; &#xa9; 2019 visuaWide</p>
 					</div>
 				</div>
-				<!-- 备案移动端 结束
-				-->
+				<!-- 备案移动端 结束-->
 			</div><!-- 加入我们 结束-->
 
 	</body>
@@ -578,7 +426,8 @@
 
 	<script>
 		$(function() {
-			changeContent(1)//调用changeContent函数
+			changeCon(1)//调用changeContent函数
+			changeContent(1)//调用changeContent函数(移动端)
 			$('#fullPage').fullpage({
 				anchors: ['intro', 'technology', 'case', 'about', 'join'], //定义锚链接
 				sectionsColor: ['#3B3B3B', '#3B3B3B', '#3B3B3B', '#3B3B3B', '#3B3B3B'],
@@ -639,10 +488,10 @@
 		 *  @method changeContent 更改内容的函数
 		 *	@param number _num 按钮定义得编号
 		 */
-		function changeContent(_num) {
+		function changeCon(_num) {
 			//console.log(typeof(_num));
 			content = '';
-			var url = "technology.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
+			var url = "json/technology.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
 			var request = new XMLHttpRequest();
 			request.open("get", url); /*设置请求方法与路径*/
 			request.send(null); /*不发送数据到服务器*/
@@ -671,7 +520,7 @@
 						default:
 							console.error('error');
 					}
-					showHtmlContent(_content);
+					showHtmlCon(_content);
 				}
 			}
 		}
@@ -680,7 +529,7 @@
 		 *  @method showHtmlContent 渲染页面的函数
 		 *	@param object _content 按钮定义得编号
 		 */
-		function showHtmlContent(_content) {
+		function showHtmlCon(_content) {
 			//console.log(typeof(_content));
 
 			document.getElementById('viewShow').innerHTML = '';
@@ -696,6 +545,109 @@
 				document.getElementById('viewShow').innerHTML += _html;
 			}
 			$('[data-toggle="popover"]').popover()
+		}
+	</script>
+	
+	<script>
+		/*  
+		 *	用于点击事件时，点击不同得按钮更换内容
+		 *  @method changeContent 更改内容的函数
+		 *	@param number _num 按钮定义得编号
+		 */
+		function changeContent(_num) {
+			//console.log(typeof(_num));
+			content = '';
+			var url = "json/text.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
+			var request = new XMLHttpRequest();
+			request.open("get", url); /*设置请求方法与路径*/
+			request.send(null); /*不发送数据到服务器*/
+			request.onload = function() { /*XHR对象获取到返回信息后执行*/
+				if (request.status == 200) { /*返回状态为200，即为数据获取成功*/
+					var json = JSON.parse(request.responseText);
+					// console.log(json);
+					_content = "";
+					switch (_num) {
+						case 1:
+							_content = json[0]['one'];
+							break;
+						case 2:
+							_content = json[1]['two'];
+							break;
+						case 3:
+							_content = json[2]['three'];
+							break;
+						case 4:
+							_content = json[3]['four'];
+							break;
+						case 5:
+							_content = json[4]['five'];
+							break;
+						case 6:
+							_content = json[5]['six'];
+							break;
+						case 7:
+							_content = json[6]['seven'];
+							break;
+						case 8:
+							_content = json[7]['eight'];
+							break;
+						case 9:
+							_content = json[8]['nine'];
+							break;
+						case 10:
+							_content = json[9]['ten'];
+							break;
+						case 11:
+							_content = json[10]['eleven'];
+							break;
+						case 12:
+							_content = json[11]['twelve'];
+							break;
+						case 13:
+							_content = json[12]['thirteen'];
+							break;
+						case 14:
+							_content = json[13]['fourteen'];
+							break;
+						case 15:
+							_content = json[14]['fifteen'];
+							break;
+						case 16:
+							_content = json[15]['sixteen'];
+							break;
+						case 17:
+							_content = json[16]['seventeen'];
+							break;
+						default:
+							console.error('error');
+					}
+					showHtmlContent(_content);
+				}
+			}
+		}
+		/*  
+		 *	将得到的json数据，渲染到页面中
+		 *  @method showHtmlContent 渲染页面的函数
+		 *	@param object _content 按钮定义得编号
+		 */
+		function showHtmlContent(_content) {
+			//console.log(typeof(_content));
+	
+			document.getElementById('imgShow').innerHTML = '';
+	
+			for (var i = 0; i < _content.length; i++) {
+				var _html = '<div class="technology-color">';
+				_html += '<div class="technology-strip">';
+				// _html +='图片地址：'+_content[i]['imgSrc']+'<br />';
+				_html += '<p class="technology-text-one">'+_content[i]['title']+'';
+				_html += '</p>';
+				_html += '<p class="technology-text-two" >'+_content[i]['sort']+'';
+				_html += '</p>';
+				_html += '</div>';
+				_html += '<img class="technology-pic" src="'+_content[i]['imgSrc']+'" />';
+				_html += '</div>'
+				document.getElementById('imgShow').innerHTML += _html;
+			}
 		}
 	</script>
 
