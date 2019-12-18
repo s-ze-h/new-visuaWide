@@ -9,25 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<title>广景视觉</title>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
-		<script>
-			(function(){
-				function changeContent() {
-					content = '';
-					var url = "technology.json" /*json文件url，本地的就写本地的位置，如果是服务器的就写服务器的路径*/
-					var request = new XMLHttpRequest();
-					request.open("get", url); /*设置请求方法与路径*/
-					request.send(null); /*不发送数据到服务器*/
-					request.onload = function() { /*XHR对象获取到返回信息后执行*/
-						if (request.status == 200) { /*返回状态为200，即为数据获取成功*/
-							var json = JSON.parse(request.responseText);
-							_content = "";
-							_content = json[0]['first'];
-							showHtmlContent(_content);
-						}
-					}
-				}
-			});
-		</script>
 	</head>
 	<body>
 		<div class="main-header">
@@ -131,7 +112,7 @@
 			<!-- 核心技术 -->
 			<div class="section  technology">
 				<div class="row">
-					<div class="col-xs-1 col-md-1">
+					<div class="col-xs-1 col-sm-3 col-md-1">
 						<table class="table table-bordered">
 							<tr>
 								<td class="active">
@@ -167,7 +148,7 @@
 							</tr>
 						</table>
 					</div>
-					<div class="col-xs-8  col-md-8 col-md-offset-1">
+					<div class="col-xs-10 col-sm-8 col-md-10 col-md-offset-1">
 						<div id="viewShow" class="row" style="color: #fff;">
 
 						</div>
@@ -403,7 +384,7 @@
 					<div class="carousel-inner" role="listbox">
 						<div class="item ">
 							<img src="http://img.guangjingshijue.com/zhongshiyou.jpg" alt="智慧厂区">
-							<div class="carousel-caption" style="bottom: 25%;">
+							<div class="carousel-caption case-text" >
 								<h1>智慧厂区</h1>
 								<p>智能视觉识别算法加成，精准把控危险点，不留安全隐患</p>
 								<p>广景视觉为中国石油在加油站原有的监控系统上，添加先进的视觉识别技术，打造平台+算法的概念。从利旧、赋能、预警、管控、报告五个方面，充分利用原有资源,全方位监测识别监控区域内人员的不安全行为及危险源和安全隐患。再将各个分站点的数据信息实时在总部展示，提升企业管理水平。</p>
@@ -411,7 +392,7 @@
 						</div>
 						<div class="item active">
 							<img src="http://img.guangjingshijue.com/huananguangdian.png" alt="智慧军工">
-							<div class="carousel-caption" style="bottom: 25%;">
+							<div class="carousel-caption case-text" >
 								<h1>智慧军工</h1>
 								<p>提前预估并消除安全隐患，让预防大于整改</p>
 								<p>广景视觉为华南光电提供了先进的智能视觉识别算法，从人的不安全行为和物的不安全状态两个方面进行智能安全管控。能精准识别忽视个人防护用品、吸烟、打手机、违规闯入、奔跑打闹等危险行为，以及明烟明火、火工区作业、行吊作业等产生的安全隐患，及时告警预防，真正做到防患于未然。</p>
@@ -419,7 +400,7 @@
 						</div>
 						<div class="item ">
 							<img src="http://img.guangjingshijue.com/guojiadianwang.jpg" alt="智慧建设">
-							<div class="carousel-caption" style="bottom: 25%;">
+							<div class="carousel-caption case-text" >
 								<h1>智慧建设</h1>
 								<p>颠覆传统安全管理方式，让安全管理更加智能高效</p>
 								<p>针对建管资源压力大，安全隐患无法提前预估等问题，广景视觉联合国家电网基建部共同打造数据价值应用平台。通过平台互联，完成基本数据导入；通过物联感知，实现现场信息自动实时反馈；通过建立风险识别库，实现风险识别及风险管控。全方位监测忽视个人防护用品、吸烟、打手机等不安全行为，自动告警提醒，减少人力成本，让安全管理更加智能高效。</p>
