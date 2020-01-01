@@ -64,8 +64,6 @@
 	display: none;
 }
 
-/* section ...............................................*/
-
 /* 提示语 */
 .heit {
 	display: none;
@@ -98,19 +96,16 @@
 }
 
 /* 核心技术 */
-.rounded {
+.img-rounded {
 	width: 200px;
 	height: 200px;
-	margin-bottom: 10px;
 }
-.img-rounded{
-	width: 200px; 
-	height: 200px;
+
+.fade {
+	position: absolute;
+	margin-top: 1%
 }
-.fade{
-	position: absolute;  
-	margin-top:5%
-}
+
 .move-technology {
 	display: none;
 }
