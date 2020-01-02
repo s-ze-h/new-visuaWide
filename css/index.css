@@ -70,32 +70,151 @@
 }
 
 /* 首页 */
-.index-icon {
+.mask {
 	position: absolute;
-	top: 20%;
-	left: 41.5%;
+	z-index: 4;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	/* background-color: rgba(0,0,0,.4); */
+	-webkit-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 
-.index-text {
+.introVideo {
 	position: absolute;
-	top: 50%;
-	left: 33%;
-	color: #fff;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	/* background-color: #ae2e25; */
+	/* in case the video doesn't fit the whole page*/
+	background-position: center center;
+	background-size: contain;
+	object-fit: cover;
+	/*cover video background */
+	z-index: 3;
+}
+
+.introVideo h1 {
+	display: inline-block;
+	overflow: hidden;
+	background: url(../img/bgt.png) no-repeat;
+	background-position: -200% center;
+	-webkit-animation: movelr 3s linear 2s 200 alternate;
+	animation: movelr 3s linear 2s 200 alternate;
+}
+
+.introVideo h1 img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.intro-case {
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+	position: relative;
+}
+
+.text-center {
 	text-align: center;
 }
 
-.index-text1 p {
-	font-size: 80px;
+.intro-text {
+	color: #fff;
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.intro-h1 {
+	font-weight: 300;
+	display: inline-block;
+	-webkit-animation-delay: .5s;
+	animation-delay: .5s;
+	border-bottom: 1px solid #fff;
+	padding: 0 120px 20px;
+	font-size: 48px;
+}
+
+.typeface {
+	font-family: '方正姚体';
+	font-style: normal;
+}
+
+.intro-p {
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
+	line-height: 1.8;
+	font-size: 30px;
+	letter-spacing: 10px;
 	font-family: '方正姚体';
 }
 
-.index-text2 p {
-	padding-top: 40%;
-	font-size: 35px;
-	font-family: '方正姚体';
+/*定义动画*/
+@-webkit-keyframes movelr {
+	from {
+		background-position: -300% center;
+	}
+
+	to {
+		background-position: 300% center;
+	}
+}
+
+@keyframes movelr {
+	from {
+		background-position: -300% center;
+	}
+
+	to {
+		background-position: 300% center;
+	}
+}
+
+@-webkit-keyframes floating {
+	0% {
+		transform: translateY(0%);
+	}
+
+	50% {
+		transform: translateY(10%);
+	}
+
+	100% {
+		transform: translateY(0%);
+	}
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);
+	}
+
+	50% {
+		transform: translateY(10%);
+	}
+
+	100% {
+		transform: translateY(0%);
+	}
 }
 
 /* 核心技术 */
+.technology{
+	background: url(../img/beijing.jpg);
+}
 .img-rounded {
 	width: 200px;
 	height: 200px;
@@ -140,6 +259,7 @@
 }
 
 /* 加入我们 */
+
 .join-bottom {
 	width: 100%;
 	height: 50px;
@@ -185,39 +305,13 @@
 	}
 
 	/* 首页 */
-	.svg {
-		display: none;
+	.intro-h1 {
+		font-size: 20px;
 	}
-
-	.move-svg {
-		display: inline;
-	}
-
-	.index-icon {
-		position: absolute;
-		top: 20%;
-		left: 30%;
-	}
-
-	.index-text {
-		position: absolute;
-		top: 50%;
-		left: 15%;
-		color: #fff;
-		text-align: center;
-	}
-
-	.index-text1 p {
-		font-size: 30px;
-		font-family: "方正姚体";
-	}
-
-	.index-text2 p {
-		padding-top: 40%;
+	
+	.intro-p {
 		font-size: 15px;
-		font-family: "方正姚体";
 	}
-
 	/* 核心技术 */
 	.move-technology {
 		display: inline;
@@ -381,7 +475,8 @@
 		padding-top: 5%;
 		color: #fff;
 		text-align: left;
-		background: url(http://img.guangjingshijue.com/gongsijianjie.gif) center;
+		/* background: url(http://img.guangjingshijue.com/gongsijianjie.gif) center; */
+		background: url(img/gongsijianjie.gif) center;
 		background-size: 100% 100%;
 	}
 
@@ -492,37 +587,12 @@
 	}
 
 	/* 首页 */
-	.svg {
-		display: none;
-	}
-
-	.move-svg {
-		display: inline;
-	}
-
-	.index-icon {
-		position: absolute;
-		top: 20%;
-		left: 32%;
-	}
-
-	.index-text {
-		position: absolute;
-		top: 50%;
-		left: 20%;
-		color: #fff;
-		text-align: center;
-	}
-
-	.index-text1 p {
+	.intro-h1 {
 		font-size: 30px;
-		font-family: "方正姚体";
 	}
-
-	.index-text2 p {
-		padding-top: 40%;
-		font-size: 15px;
-		font-family: "方正姚体";
+	
+	.intro-p {
+		font-size: 25px;
 	}
 
 	/* 核心技术 */
@@ -1061,38 +1131,6 @@
 	/* -  nav */
 
 	/* 首页 */
-	.svg {
-		display: none;
-	}
-
-	.move-svg {
-		display: inline;
-	}
-
-	.index-icon {
-		position: absolute;
-		top: 25%;
-		left: 40%;
-	}
-
-	.index-text {
-		position: absolute;
-		top: 50%;
-		left: 20%;
-		color: #fff;
-		text-align: center;
-	}
-
-	.index-text1 p {
-		font-size: 55px;
-		font-family: "方正姚体";
-	}
-
-	.index-text2 p {
-		padding-top: 40%;
-		font-size: 30px;
-		font-family: "方正姚体";
-	}
 
 	/* 关于广景 */
 	.about-body {
