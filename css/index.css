@@ -106,8 +106,8 @@
 	overflow: hidden;
 	background: url(../img/bgt.png) no-repeat;
 	background-position: -200% center;
-	-webkit-animation: movelr 3s linear 2s 200 alternate;
-	animation: movelr 3s linear 2s 200 alternate;
+	-webkit-animation: movelr 3s linear .1s 200 alternate;
+	animation: movelr 3s linear .1s 200 alternate;
 }
 
 .introVideo h1 img {
@@ -213,7 +213,10 @@
 
 /* 核心技术 */
 .technology{
-	background: url(../img/beijing.jpg);
+	background: url(../img/beijing.jpg) ;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
 }
 .img-rounded {
 	width: 200px;
@@ -358,7 +361,7 @@
 	.menu {
 		position: absolute;
 		right: 50px;
-		top: -10px;
+		top: 5px;
 	}
 
 	.dropdown-menu {
@@ -376,7 +379,6 @@
 		list-style: none;
 		background-color: rgba(0, 0, 0, 0.6);
 		-webkit-background-clip: padding-box;
-
 	}
 
 	.dropdown-menu>li>a {
@@ -417,7 +419,7 @@
 	/* 应用案例 */
 
 	.carousel-caption {
-		position: absolute;
+		position: fixed;
 		right: 0;
 		bottom: 0px;
 		left: 0;
@@ -609,10 +611,6 @@
 		height: 100%;
 	}
 
-	/* 核心技术 */
-	.move-technology {
-		display: inline;
-	}
 
 	.swiper-container {
 		display: none;
@@ -641,7 +639,7 @@
 	.menu {
 		position: absolute;
 		right: 50px;
-		top: 0px;
+		top: 10px;
 	}
 
 	.dropdown-menu {
@@ -1307,12 +1305,16 @@
 	}
 
 	/* 核心算法 */
+	
 	.about-front {
 		position: absolute;
 		top: 10%;
 	}
 
 	/* 加入我们 */
+	.join-pic img{
+		width: 1366px;
+	}
 	.map-join {
 		width: 550px;
 		height: 350px;
@@ -1364,6 +1366,10 @@
 		padding-top: 40%;
 		font-size: 30px;
 		font-family: "方正姚体";
+	}
+
+	.join-pic img{
+		width: 1535px;
 	}
 
 	/* 加入我们 */

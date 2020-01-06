@@ -79,7 +79,10 @@
 
 /* 关于广景 */
 .about-body {
-	background:url(../img/beijing.jpg);
+	background:url(../img/beijing.jpg) ;
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	-moz-background-size:100% 100%;
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
@@ -131,6 +134,7 @@
 	padding: 20px;
 	box-sizing: border-box;
 	clip-path: circle(0% at 100% 100%);
+	text-align: justify!important;
 }
 
 .card:hover .descriptions {
