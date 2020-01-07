@@ -3,6 +3,10 @@
 	height: 52rem;
 }
 
+#fp-nav {
+	display: none;
+}
+
 @font-face {
 	font-family: '方正姚体';
 	src: url('font/方正姚体.ttf');
@@ -467,7 +471,7 @@
 		height: 20rem;
 		padding-top: 5%;
 		color: #fff;
-		text-align: left;
+		text-align: center;
 		/* background: url(http://img.guangjingshijue.com/gongsijianjie.gif) center; */
 		background: url(../img/gongsijianjie.jpg) center;
 		background-size: 100% 100%;
@@ -708,7 +712,7 @@
 		height: 25rem;
 		padding-top: 5%;
 		color: #fff;
-		text-align: left;
+		text-align: center;
 		/* background: url(http://img.guangjingshijue.com/gongsijianjie.gif) center; */
 		background: url(../img/gongsijianjie.jpg) center;
 		background-size: 100% 100%;
@@ -977,7 +981,7 @@
 		height: 25rem;
 		padding-top: 5%;
 		color: #fff;
-		text-align: left;
+		text-align: center;
 		/* background: url(http://img.guangjingshijue.com/gongsijianjie.gif) center; */
 		background: url(../img/gongsijianjie.jpg) center;
 		background-size: 100% 100%;
@@ -1096,7 +1100,7 @@
 		position: absolute;
 		top: 10%;
 		left: 20%;
-		text-align: left;
+		text-align: center;
 		background: url(http://img.guangjingshijue.com/gongsijianjie.gif) center;
 		background-size: 100% 100%;
 	}
