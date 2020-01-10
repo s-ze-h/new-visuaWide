@@ -33,7 +33,7 @@
         "four":[
             {
                 "title":"脱岗检测",
-                "imgSrc":"",
+                "imgSrc":"img/tuogangshibie.jpg",
                 "sort":"人员检测类",
                 "other":"other content,just like link , button color etc.."
             }
@@ -43,7 +43,7 @@
         "five":[
             {
                 "title":"闯入检测",
-                "imgSrc":"",
+                "imgSrc":"img/chuangrushibie.jpg",
                 "sort":"人员检测类",
                 "other":"other content,just like link , button color etc.."
             }
